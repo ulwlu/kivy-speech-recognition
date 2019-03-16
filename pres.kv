@@ -1,0 +1,256 @@
+#:import color kivy.utils.get_color_from_hex
+#:import sp kivy.metrics.sp
+#:import sin math.sin
+#:import chain itertools.chain
+#:set title_color '232629'
+#:set subtitle_color '3196E6'
+#:set default_color (0, 0, 0, 1)
+#:set background_color 'fcfcfc'
+#:set content_color '000000'
+#:set font_size 35
+
+
+
+
+
+<Title@Label>
+  size_hint_y: None
+  height: self.texture_size[1] + sp(20)
+  col: title_color
+  font_size: sp(25)
+  canvas.before:
+    Color:
+      rgba: color(root.col) if root.col else default_color
+    Rectangle:
+      size: self.size
+      pos: self.pos
+
+
+
+<SubTitle@FloatLayout+Title>:
+  col: subtitle_color
+
+
+
+<PresButton@ButtonBehavior+SubTitle>:
+
+
+
+<ContentLabel@Label>:
+#<ContentLabel@FuncLabel>:
+  color: color(content_color)
+  font_size: sp(24)
+  size: self.texture_size
+  size_hint_y: None
+
+
+
+<CodeLabel@Label>
+  code: ''
+  text: self.code .replace('\t', ' ' * 4)
+  font_size: sp(20)
+  canvas.before:
+    Color:
+      rgba: 0, 0, 0, 1
+    Rectangle:
+      size: self.size
+      pos: self.pos
+
+
+
+<Spacer@Widget>
+
+
+
+#BoxLayout:
+FuncLabel:
+  orientation: 'vertical'
+  canvas.before:
+    Color:
+      rgba: color(background_color)
+    Rectangle:
+      pos: self.pos
+      size: self.size
+
+
+
+  Title:
+    text: "わたあめ自動生成 - 音声認識注文受付"
+
+
+
+  SubTitle:
+    text: sm.current
+
+
+
+  ScreenManager:
+    id: sm
+    Screen:
+      name: "スタート画面　(1/4ステップ目)"
+      BoxLayout:
+        orientation: 'vertical'
+        
+        ContentLabel:
+          text: 
+            """
+            いらっしゃいませ！
+            このアプリはお客様のご注文を音声認識し、機械に情報を送信します。\n
+
+            ご注文の際は「ご注文」ボタンを押して下さい。
+            プログラム終了の際は「終了」ボタンを押して下さい。
+            """
+
+        Spacer
+        
+        BoxLayout:
+          orientation: 'horizontal'
+          padding: 20, 20, 10, 10
+          
+          PresButton:
+            text: 'ご注文'
+            on_press:
+              sm.transition.direction = 'right'
+              sm.current = sm.next()
+          
+          Label:
+          
+          PresButton:
+            text: '終了'
+            on_press:
+              import sys;
+              sys.exit()
+
+
+
+    Screen:
+      name: 'ご注文受付開始(2/4ステップ目)'
+      BoxLayout:
+        orientation: 'vertical'
+        
+        ContentLabel:
+          text:
+            '''
+            \t  ご注文を承ります。\n
+
+            \t  (1):  「音声認識開始」ボタンを押してください
+            \t         (画面は変わりません)
+            \t  (2):  15秒以内にご注文をマイクに伝えてください
+            \t  入力例：「提灯を1個」「花と兎を2個ずつ」「全部1個」「3つとも2個」\n
+            
+            \t  注意:3秒音声入力が無い場合、そこで音声認識はストップされます
+            '''
+        
+        Spacer
+        
+        BoxLayout:
+          orientation: 'horizontal'
+          padding: 20, 20, 10, 10
+          
+          PresButton:
+            text: "音声認識開始"
+            #col: root.boxcol
+            #text: root.boxtext
+            on_press:
+              self.text = "音声認識実行中";
+              self.col = 'DC4A39'
+            on_release:
+              root.speech_input()
+              self.text = "音声認識開始";
+              self.col = subtitle_color;
+              sm.transition.direction = 'right'
+              sm.current = sm.next()
+          
+          Label:
+          
+          PresButton:
+            text: '前に戻る'
+            on_press:
+              sm.transition.direction = 'left'
+              sm.current = sm.previous()
+
+
+
+    Screen:
+      name: '注文確認中(3/4ステップ目)'
+      #FuncLabel:
+      BoxLayout:
+        orientation: 'vertical'
+        
+        ContentLabel:
+          text:
+            '''
+            花:{0}個　提灯:{1}個　兎:{2}個
+            以上でよろしいでしょうか？
+            '''.format(root.hnum, root.tnum, root.unum)
+        
+        Spacer
+        
+        BoxLayout:
+          orientation: 'horizontal'
+          padding: 20, 20, 10, 10
+          
+          PresButton:
+            text: "OK"
+            on_press:
+              sm.transition.direction = 'right'
+              sm.current = sm.next()
+          
+          Label:
+          
+          PresButton:
+            text: '音声認識をやり直す'
+            on_press:
+              sm.transition.direction = 'left'
+              sm.current = sm.previous()
+
+
+
+    Screen:
+      name: "ご注文完了(4/4ステップ目)"
+      BoxLayout:
+        orientation: 'vertical'
+        
+        ContentLabel:
+          text:
+            '''
+            \t  お会計は{0}円です。\n
+            \t  わたあめの成形を開始致します。
+            \t  ご注文ありがとうございました！\n
+
+            「注文画面へ戻る」ボタンを押してください。
+            '''.format(root.total)
+        
+        Spacer
+
+        BoxLayout:
+          orientation: 'horizontal'
+          padding: 20, 20, 10, 10
+          
+          PresButton:
+            text: "注文画面へ戻る"
+            on_press:
+              sm.transition.direction = 'right'
+              sm.current = sm.next()
+          
+          Label:
+          
+          PresButton:
+            text: '前に戻る'
+            on_press:
+              sm.transition.direction = 'left'
+              sm.current = sm.previous()
+
+
+
+  SubTitle:
+    text: "作者　@##### ######"
+    col: content_color
+    font_size: sp(15)
+
+
+
+<MyWidget@BoxLayout>:
+  Button:
+    id: btn
+    text: 'push me'

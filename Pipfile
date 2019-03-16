@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyaudio = "*"
+speechrecognition = "*"
+google-api-python-client = "*"
+six = "*"
+semidbm = "*"
+pykakasi = "*"
+pygame = "*"
+cython = "*"
+kivy = "*"
+docutils = "*"
+pygments = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
