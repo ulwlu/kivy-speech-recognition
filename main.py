@@ -151,7 +151,7 @@ class FuncLabel(BoxLayout):
 class Pres(App):
 
   def build(self):
-    self.title = "わたあめ自動生成"
+    self.title = "xxx自動生成"
     Window.bind(on_key_down = self.handle_key)
     return super(Pres, self).build()
 
