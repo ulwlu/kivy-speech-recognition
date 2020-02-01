@@ -1,11 +1,8 @@
 # CONTENT
+Kivyを使ったGUIの音声認識アプリ。
 作ったのは2014年頃。初めてプログラムに触れたものです。
 GoogleCloudPlatformを用いた音声認識アプリです。
 「提灯、花、ウサギは〜個」という注文形式に対応した音声認識です。
-何でも話しかけてみたい場合はCUI版を試してみてください
-https://bitbucket.org/ryuta2232/cui_speechrecognition/
-
-
 
 # HowTo
 1: Pythonをインストール( 参考:　https://www.sejuku.net/blog/33294 )
