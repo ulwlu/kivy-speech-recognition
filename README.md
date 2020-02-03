@@ -1,10 +1,13 @@
-# CONTENT
+<h3 align="center">kivy-speech-recognition</h3>
+<p align="center">ᓚᘏᗢ Python GUI App to reply speech.</p>
+
+## CONTENT
 Kivyを使ったGUIの音声認識アプリ。
 作ったのは2014年頃。初めてプログラムに触れたものです。
 GoogleCloudPlatformを用いた音声認識アプリです。
 「提灯、花、ウサギは〜個」という注文形式に対応した音声認識です。
 
-# HowTo
+## HowTo
 1: Pythonをインストール( 参考:　https://www.sejuku.net/blog/33294 )
 
 2: コマンドプロンプトかターミナルで pip install pipenv を実行
