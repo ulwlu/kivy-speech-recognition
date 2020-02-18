@@ -1,6 +1,14 @@
 <h3 align="center">kivy-speech-recognition</h3>
 <p align="center">ᓚᘏᗢ Python GUI App to reply speech.</p>
 
+
+## Notes
+
+**This repository is very old and made rough. Please don't take it serious.**
+
+**このリポジトリはかなり前に、雑に制作されたものです。あらかじめご了承ください。**
+
+
 ## Content
 Kivyを使ったGUIの音声認識アプリ。
 作ったのは2014年頃。初めてプログラムに触れたものです。
