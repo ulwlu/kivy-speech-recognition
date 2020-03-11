@@ -4,7 +4,7 @@
 
 ## Notes
 
-**This repository is very old and made rough. Please don't take it serious.**
+**This repository is very old and made rough. Not maintained anymore.**
 
 **このリポジトリはかなり前に、雑に制作されたものです。あらかじめご了承ください。**
 
