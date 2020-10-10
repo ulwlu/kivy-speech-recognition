@@ -6,35 +6,25 @@
 
 **This repository is very old and made rough. Not maintained anymore.**
 
-**このリポジトリはかなり前に、雑に制作されたものです。あらかじめご了承ください。**
-
-
 ## Content
-Kivy + Google Speech to Textを使ったGUIのクロスプラットフォーム音声認識アプリ。
+Cross platform GUI speech-recognition Application.
 
-作ったのは2014年頃。私が人生で初めてプログラムに触れた作品です。屋台を営んでいる友人の希望を実現するため、個人受託で開発しました。
+It's made by Kivy and Google Speech to Text.
 
-「提灯、花、ウサギは〜個」という注文形式に対応した音声認識です。
+I created this at 2014. This was the first time I experienced programming. This product is for my friend who owned shop on street.
 
-## Installation
-1: Pythonをインストール( 参考:　https://www.sejuku.net/blog/33294 )
+The voice will be reacted with keyword "Tyouchin(Lamp), Hana(flower), Usagi(rabbit) ha ~ko(portions)".
 
-2: コマンドプロンプトかターミナルで pip install pipenv を実行
+## Requirements
+### portaudio
+windows: http://www.portaudio.com
+mac:
+```
+brew install portaudio
+brew link portaudio
+```
 
-3: portaudioをインストール
-        windowsなら
-            http://www.portaudio.com/ からインストール
-        macなら
-            brew install portaudio
-            brew link portaudio
-			
-4: sdlをインストール
-        windowsなら
-            http://www.libsdl.org からインストール
-        macなら
-            brew install sdl
+### sdlをインストール
+windows: http://www.libsdl.org
+mac: brew install sdl
 
-5: main.pyがあるフォルダで pipenv install　を実行
-
-6: python main.py で音声認識を実行します。
-        ３秒以内に声をかけてください。
