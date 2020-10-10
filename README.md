@@ -24,7 +24,7 @@ brew install portaudio
 brew link portaudio
 ```
 
-### sdlをインストール
+### sdl
 windows: http://www.libsdl.org
 mac: brew install sdl
 
