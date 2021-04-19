@@ -1,30 +1,23 @@
-# CONTENT
-GoogleCloudPlatformを用いた音声認識アプリです。
-「提灯、花、ウサギは〜個」という注文形式に対応した音声認識です。
-何でも話しかけてみたい場合はCUI版を試してみてください
-https://bitbucket.org/ryuta2232/cui_speechrecognition/
+## Notes
 
+**This repository is very old(2017) and made rough. Not maintained anymore.**
 
+## Content
+Cross platform GUI speech-recognition Application. It's made by Kivy and Google Speech to Text.
 
-# HowTo
-1: Pythonをインストール( 参考:　https://www.sejuku.net/blog/33294 )
+This was my first software programming experience. This product is for my friend's shop.
 
-2: コマンドプロンプトかターミナルで pip install pipenv を実行
+The voice will be reacted with keyword "Tyouchin(Lamp), Hana(flower), Usagi(rabbit) ha ~ko(portions)".
 
-3: portaudioをインストール
-        windowsなら
-            http://www.portaudio.com/ からインストール
-        macなら
-            brew install portaudio
-            brew link portaudio
-			
-4: sdlをインストール
-        windowsなら
-            http://www.libsdl.org からインストール
-        macなら
-            brew install sdl
+## Requirements
+### portaudio
+windows: http://www.portaudio.com
+mac:
+```
+brew install portaudio
+brew link portaudio
+```
 
-5: main.pyがあるフォルダで pipenv install　を実行
-
-6: python main.py で音声認識を実行します。
-        ３秒以内に声をかけてください。
+### sdl
+windows: http://www.libsdl.org
+mac: brew install sdl
